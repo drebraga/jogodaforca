@@ -4,9 +4,9 @@ import Jogo from "./components/Jogo";
 import Chute from "./components/Chute";
 
 function App() {
+  console.log(palavras)
   return (
     <div className="App">
-      console.log({palavras})
       <Jogo />
       <Letras />
       <Chute />

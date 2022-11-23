@@ -2,7 +2,7 @@ function Chute() {
 
     return (
         <>
-        <div>Aqui fica o input para chutar</div>        
+            <div>Aqui fica o input para chutar</div>        
         </>
     )
 }

@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+/* app */
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.App {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* -------------------------------- Jogo */
+
+.game {
+  margin-top: 1%;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.game img {
+  width: 40%;
+}
+
+.game button {
+  width: 200px;
+  height: 60px;
+  background: #27ae60;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  color: #ffffff;
+}
+
+/* -------------------------------- Alfabeto */
+
+.alphabet {
+  margin: 1%;
+  width: 702px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.letter {
+  color: #798a9f;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  width: 40px;
+  height: 40px;
+  background-color: #9faab5;
+  border: 1px solid #7aa7c7;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 6px;
+}
