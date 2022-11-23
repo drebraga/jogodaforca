@@ -15,17 +15,17 @@ body {
 /* -------------------------------- Jogo */
 
 .game {
-  margin-top: 1%;
+  margin-top: 2%;
   width: 70%;
   display: flex;
   justify-content: space-between;
 }
 
 .game img {
-  width: 40%;
+  width: 35%;
 }
 
-.game button {
+.game input {
   width: 200px;
   height: 60px;
   background: #27ae60;
@@ -39,7 +39,7 @@ body {
 /* -------------------------------- Alfabeto */
 
 .alphabet {
-  margin: 1%;
+  margin: 2%;
   width: 702px;
   display: flex;
   flex-wrap: wrap;
@@ -59,4 +59,47 @@ body {
   align-items: center;
   justify-content: center;
   margin: 6px;
+}
+
+/* -------------------------------- Chute */
+
+.chute {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chute p {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+}
+
+.chute input[value=""] {
+  width: 353px;
+  height: 40px;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  margin: 0 15px;
+}
+
+.chute input[value="Chutar"] {
+  width: 100px;
+  height: 40px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  background-color: #e1ecf4;
+  border: 1px solid #7aa7c7;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #3c76a1;
 }

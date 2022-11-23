@@ -2,7 +2,11 @@ function Chute() {
 
     return (
         <>
-            <div>Aqui fica o input para chutar</div>        
+            <div className="chute">
+                <p>Já sei a palavra!</p>
+                <input type="text" value="" />
+                <input type="button" value="Chutar" />
+            </div>        
         </>
     )
 }
