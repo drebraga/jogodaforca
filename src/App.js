@@ -5,39 +5,44 @@ import Jogo from "./components/Jogo";
 import Chute from "./components/Chute";
 
 function App() {
-  let numPalavra;
   const [gameStart, setGameStart] = useState(false);
   const [erros, setErros] = useState(0);
-  const [palavra, setPalavra] = useState("");
-  const [arrayPalavra, setArrayPalavra] = useState(Array.from(palavra));
-  const [letrasEscolhidas, setLetrasEscolhidas] = useState([]);
-  const [palavraEscondida, setPalavraEscondida] = useState([]);
-  console.log(arrayPalavra);
-  console.log(palavraEscondida);
+  const [word, setWord] = useState("");
+  const [arrayWord, setArrayWord] = useState([]);
+  const [hiddenWord, setHiddenWord] = useState([]);
+  const [chosedLetter, setChosedLetter] = useState([]);
+  console.log("palavra normal " + word);
+  console.log("palavra normal array " + arrayWord);
+  console.log("palavra escondida " + hiddenWord);
+  console.log(erros);
 
   function newGame() {
-    escolhePalavra()
     setGameStart(true);
     setErros(0);
-    setPalavra(palavras[numPalavra]);
-    setLetrasEscolhidas([]);
-    setArrayPalavra(Array.from(palavra));
-    setPalavraEscondida(arrayPalavra.map((element) => element = "_"));
+    setChosedLetter([]);
+    const novaPalavra = palavras[escolhePalavra()];
+    setWord(novaPalavra);
+    setArrayWord(Array.from(novaPalavra));
+    setHiddenWord(Array.from(novaPalavra).map((element) => element = "_"));
   }
 
-  function comparaLetraEscolhida(letra) {
-    setLetrasEscolhidas([...letrasEscolhidas, letra]);
-    arrayPalavra.includes(letra)
+  function compareHiddenLetter(letra) {
+    setChosedLetter([...chosedLetter, letra]);
+    !arrayWord.includes(letra) ? setErros(erros + 1) : showCorrectsLetters(letra);
+  }
+
+  function showCorrectsLetters(letra) {
+    setHiddenWord(hiddenWord.map((e, i) => (arrayWord[i]=== letra) ? e = letra : e));
   }
 
   function escolhePalavra() {
-    numPalavra = Math.round(Math.random() * palavras.length);
-  } escolhePalavra()
+    return Math.round(Math.random() * palavras.length);
+  }
 
   return (
     <div className="App">
-      <Jogo setGameStart={setGameStart} gameStart={gameStart} newGame={newGame} palavraEscondida={palavraEscondida} />
-      <Letras gameStart={gameStart} letras={letrasEscolhidas} comparaLetraEscolhida={comparaLetraEscolhida} />
+      <Jogo setGameStart={setGameStart} gameStart={gameStart} newGame={newGame} hiddenWord={hiddenWord} />
+      <Letras gameStart={gameStart} chosedLetter={chosedLetter} compareHiddenLetter={compareHiddenLetter} />
       <Chute />
     </div>
   );
