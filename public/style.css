@@ -45,7 +45,7 @@ body {
   flex-wrap: wrap;
 }
 
-.letter {
+.letterDisabled {
   color: #798a9f;
   font-weight: 700;
   font-size: 16px;
@@ -59,6 +59,13 @@ body {
   align-items: center;
   justify-content: center;
   margin: 6px;
+}
+
+.letterEnabled {
+  background: #e1ecf4;
+  border: 1px solid #7aa7c7;
+  border-radius: 3px;
+  color: #39739d;
 }
 
 /* -------------------------------- Chute */
@@ -79,7 +86,7 @@ body {
   color: #000000;
 }
 
-.chute input[value=""] {
+.chute input[placeholder=""] {
   width: 353px;
   height: 40px;
   background: #ffffff;
