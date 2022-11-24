@@ -14,27 +14,29 @@ function App() {
   const [endGameStatus, setEndGameStatus] = useState("");
 
   console.log("palavra normal " + word);
-  console.log(error);
 
 
+  // --------------------------------------------------- Escolhe o numero para o array de palavras
+  function escolhePalavra() {
+    return Math.round(Math.random() * palavras.length);
+  }
+
+
+  // --------------------------------------------------- Finaliza o jogo
   function endGame(props) {
-    console.log(props)
-    console.log(props.includes)
-    console.log(error === 6)
     if (!props.includes("_") && error < 6) {
       setEndGameStatus("ganhou");
       setGameStart(false);
-      setChosedLetter([]);
       setHiddenWord(Array.from(word));
-    } else if (props.includes("_") && error > 4) {
+    } else if (props.includes("_") && error >= 6) {
       setEndGameStatus("perdeu");
       setGameStart(false);
-      setChosedLetter([]);
       setHiddenWord(Array.from(word));
     }
   }
 
 
+  // --------------------------------------------------- Inicia ou reinicia o jogo
   function newGame() {
     setEndGameStatus("");
     setGameStart(true);
@@ -46,6 +48,8 @@ function App() {
     setHiddenWord(Array.from(newWord).map((element) => element = "_"));
   }
 
+
+  // --------------------------------------------------- Compara a letra selecionada na palavra
   function compareHiddenLetter(letra) {
     setChosedLetter([...chosedLetter, letra]);
     if (!arrayWord.includes(letra)) {
@@ -56,15 +60,15 @@ function App() {
     }
   }
 
+
+  // --------------------------------------------------- Mostra a(s) letras(s) selecionada(s) se houver na palavra
   function showCorrectsLetters(letra) {
     const contem = hiddenWord.map((e, i) => (arrayWord[i] === letra) ? e = letra : e)
     setHiddenWord(contem);
     endGame(contem);
   }
 
-  function escolhePalavra() {
-    return Math.round(Math.random() * palavras.length);
-  }
+
 
   return (
     <div className="App">

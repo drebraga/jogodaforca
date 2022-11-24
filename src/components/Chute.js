@@ -5,7 +5,7 @@ function Chute({guess}) {
             <div className="chute">
                 <p>Já sei a palavra!</p>
                 <input type="text" placeholder="" value={guess} />
-                <input type="submit" value="Chutar" />
+                <input type="button" value="Chutar" />
             </div>        
         </>
     )
