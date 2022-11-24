@@ -6,11 +6,11 @@ function Jogo({ word, newGame, hiddenWord, error, endGameStatus }) {
             <div className="palavraGame">
                 <input data-test="choose-word" onClick={newGame}
                     type="button" value={"Escolher Palavra"} />
-                <p
+                <div
                     className={endGameStatus}
                     data-test="word"
                     data-answer={word}
-                >{hiddenWord.join('')}</p>
+                >{hiddenWord.join('')}</div>
             </div>
         </div>
     )

@@ -75,7 +75,7 @@ function App() {
 
   return (
     <div className="App">
-      <Jogo newGame={newGame} hiddenWord={hiddenWord} error={error} endGameStatus={endGameStatus} />
+      <Jogo gameStart={gameStart} word={word} newGame={newGame} hiddenWord={hiddenWord} error={error} endGameStatus={endGameStatus} />
       <Letras gameStart={gameStart} chosedLetter={chosedLetter} compareHiddenLetter={compareHiddenLetter} error={error} />
       <Chute gameStart={gameStart} />
     </div>

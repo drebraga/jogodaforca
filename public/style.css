@@ -37,7 +37,7 @@ body {
   color: #ffffff;
 }
 
-.game p {
+.palavraGame div  {
   margin-top: 30%;
   font-family: "Noto Sans", sans-serif;
   font-style: bold;
