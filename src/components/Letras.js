@@ -3,15 +3,13 @@ function Letras({ gameStart, chosedLetter, compareHiddenLetter }) {
     return (
         <div className="alphabet">
             {alfabeto.map((l) => (
-                <input
+                <button
                     data-test="letter"
                     disabled={(chosedLetter.includes(l) || !gameStart)}
-                    type="button"
                     onClick={() => compareHiddenLetter(l)}
                     key={l}
                     className={(!chosedLetter.includes(l) && gameStart) ? "letterDisabled letterEnabled" : "letterDisabled"}
-                    value={l.toUpperCase()}
-                />
+                >{l.toUpperCase()}</button>
             ))}
         </div>
     )
