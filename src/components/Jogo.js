@@ -1,4 +1,4 @@
-function Jogo({ newGame, hiddenWord, error, endGameStatus }) {
+function Jogo({ word, newGame, hiddenWord, error, endGameStatus }) {
 
     return (
         <div className="game">
@@ -9,7 +9,7 @@ function Jogo({ newGame, hiddenWord, error, endGameStatus }) {
                 <p
                     className={endGameStatus}
                     data-test="word"
-                    data-answer="word"
+                    data-answer={word}
                 >{hiddenWord.join('')}</p>
             </div>
         </div>
