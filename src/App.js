@@ -6,7 +6,7 @@ import Chute from "./components/Chute";
 
 function App() {
   const [gameStart, setGameStart] = useState(false);
-  const [erros, setErros] = useState(0);
+  const [error, setError] = useState(0);
   const [word, setWord] = useState("");
   const [arrayWord, setArrayWord] = useState([]);
   const [hiddenWord, setHiddenWord] = useState([]);
@@ -14,21 +14,21 @@ function App() {
   console.log("palavra normal " + word);
   console.log("palavra normal array " + arrayWord);
   console.log("palavra escondida " + hiddenWord);
-  console.log(erros);
+  console.log(error);
 
   function newGame() {
     setGameStart(true);
-    setErros(0);
+    setError(0);
     setChosedLetter([]);
-    const novaPalavra = palavras[escolhePalavra()];
-    setWord(novaPalavra);
-    setArrayWord(Array.from(novaPalavra));
-    setHiddenWord(Array.from(novaPalavra).map((element) => element = "_"));
+    const newWord = palavras[escolhePalavra()];
+    setWord(newWord);
+    setArrayWord(Array.from(newWord));
+    setHiddenWord(Array.from(newWord).map((element) => element = "_"));
   }
 
   function compareHiddenLetter(letra) {
     setChosedLetter([...chosedLetter, letra]);
-    !arrayWord.includes(letra) ? setErros(erros + 1) : showCorrectsLetters(letra);
+    !arrayWord.includes(letra) ? setError(error + 1) : showCorrectsLetters(letra);
   }
 
   function showCorrectsLetters(letra) {
@@ -41,7 +41,7 @@ function App() {
 
   return (
     <div className="App">
-      <Jogo setGameStart={setGameStart} gameStart={gameStart} newGame={newGame} hiddenWord={hiddenWord} />
+      <Jogo setGameStart={setGameStart} gameStart={gameStart} newGame={newGame} hiddenWord={hiddenWord} error={error} />
       <Letras gameStart={gameStart} chosedLetter={chosedLetter} compareHiddenLetter={compareHiddenLetter} />
       <Chute />
     </div>
