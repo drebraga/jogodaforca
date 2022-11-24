@@ -14,6 +14,7 @@ function App() {
   const [endGameStatus, setEndGameStatus] = useState("");
 
   console.log("palavra normal " + word);
+  console.log(error);
 
 
   // --------------------------------------------------- Escolhe o numero para o array de palavras
@@ -24,7 +25,8 @@ function App() {
 
   // --------------------------------------------------- Finaliza o jogo
   function endGame(palavra, erros) {
-    if (!palavra.includes("_") && erros < 6) {
+    console.log(erros);
+    if (!palavra.includes("_")) {
       setEndGameStatus("ganhou");
       setGameStart(false);
       setHiddenWord(Array.from(word));
@@ -50,10 +52,10 @@ function App() {
 
 
   // --------------------------------------------------- Compara a letra selecionada na palavra
-  function compareHiddenLetter(letra, erro) {
+  function compareHiddenLetter(letra) {
     setChosedLetter([...chosedLetter, letra]);
     if (!arrayWord.includes(letra)) {
-      let erros = erro + 1;
+      let erros = error + 1;
       setError(erros)
       endGame(hiddenWord, erros);
     } else {
