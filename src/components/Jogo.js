@@ -1,12 +1,16 @@
-function Jogo({newGame, hiddenWord, error, endGameStatus}) {
+function Jogo({ newGame, hiddenWord, error, endGameStatus }) {
 
     return (
         <div className="game">
-            <img srcSet={`./assets/forca${error}.png`} alt="Imagem indisponível" />
+            <img data-test="game-image" srcSet={`./assets/forca${error}.png`} alt="Imagem indisponível" />
             <div className="palavraGame">
-                <input onClick={newGame}
+                <input data-test="choose-word" onClick={newGame}
                     type="button" value={"Escolher Palavra"} />
-                <p className={endGameStatus} >{hiddenWord}</p>
+                <p
+                    className={endGameStatus}
+                    data-test="word"
+                    data-answer="quarentena"
+                >{hiddenWord}</p>
             </div>
         </div>
     )
