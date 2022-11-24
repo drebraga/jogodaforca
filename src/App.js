@@ -29,10 +29,12 @@ function App() {
     if (!palavra.includes("_")) {
       setEndGameStatus("ganhou");
       setGameStart(false);
+      setChosedLetter([]);
       setHiddenWord(Array.from(word));
-    } else if (palavra.includes("_") && erros >= 6) {
+    } else if (palavra.includes("_") && erros === 6) {
       setEndGameStatus("perdeu");
       setGameStart(false);
+      setChosedLetter([]);
       setHiddenWord(Array.from(word));
     }
   }

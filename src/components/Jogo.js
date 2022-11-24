@@ -2,7 +2,7 @@ function Jogo({ word, newGame, hiddenWord, error, endGameStatus }) {
 
     return (
         <div className="game">
-            <img data-test="game-image" srcSet={`./assets/forca${error}.png`} alt="Imagem indisponível" />
+            <img data-test="game-image" src={`./assets/forca${error}.png`} alt="Imagem indisponível" />
             <div className="palavraGame">
                 <input data-test="choose-word" onClick={newGame}
                     type="button" value={"Escolher Palavra"} />
