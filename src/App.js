@@ -74,7 +74,7 @@ function App() {
     <div className="App">
       <Jogo newGame={newGame} hiddenWord={hiddenWord} error={error} endGameStatus={endGameStatus} />
       <Letras gameStart={gameStart} chosedLetter={chosedLetter} compareHiddenLetter={compareHiddenLetter} />
-      <Chute />
+      <Chute gameStart={gameStart} />
     </div>
   );
 }

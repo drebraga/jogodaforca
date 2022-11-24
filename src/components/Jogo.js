@@ -10,7 +10,7 @@ function Jogo({ newGame, hiddenWord, error, endGameStatus }) {
                     className={endGameStatus}
                     data-test="word"
                     data-answer="quarentena"
-                >{hiddenWord}</p>
+                >{hiddenWord.join('')}</p>
             </div>
         </div>
     )
