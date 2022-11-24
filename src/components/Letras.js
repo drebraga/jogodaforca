@@ -4,7 +4,7 @@ function Letras({gameStart, chosedLetter, compareHiddenLetter}) {
         <div className="alphabet">
             {alfabeto.map((l) => (
                 <input
-                    disabled={chosedLetter.includes(l)}
+                    disabled={(chosedLetter.includes(l) || !gameStart)}
                     type="button"
                     onClick={() => compareHiddenLetter(l)}
                     key={l}

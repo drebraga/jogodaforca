@@ -53,6 +53,14 @@ body {
   align-items: flex-end;
 }
 
+.perdeu {
+  color: red;
+}
+
+.ganhou {
+  color: green;
+}
+
 /* -------------------------------- Alfabeto */
 
 .alphabet {

@@ -9,14 +9,34 @@ function App() {
   const [error, setError] = useState(0);
   const [word, setWord] = useState("");
   const [arrayWord, setArrayWord] = useState([]);
-  const [hiddenWord, setHiddenWord] = useState([]);
+  const [hiddenWord, setHiddenWord] = useState([""]);
   const [chosedLetter, setChosedLetter] = useState([]);
+  const [endGameStatus, setEndGameStatus] = useState("");
+
   console.log("palavra normal " + word);
-  console.log("palavra normal array " + arrayWord);
-  console.log("palavra escondida " + hiddenWord);
   console.log(error);
 
+
+  function endGame(props) {
+    console.log(props)
+    console.log(props.includes)
+    console.log(error === 6)
+    if (!props.includes("_") && error < 6) {
+      setEndGameStatus("ganhou");
+      setGameStart(false);
+      setChosedLetter([]);
+      setHiddenWord(Array.from(word));
+    } else if (props.includes("_") && error > 4) {
+      setEndGameStatus("perdeu");
+      setGameStart(false);
+      setChosedLetter([]);
+      setHiddenWord(Array.from(word));
+    }
+  }
+
+
   function newGame() {
+    setEndGameStatus("");
     setGameStart(true);
     setError(0);
     setChosedLetter([]);
@@ -28,11 +48,18 @@ function App() {
 
   function compareHiddenLetter(letra) {
     setChosedLetter([...chosedLetter, letra]);
-    !arrayWord.includes(letra) ? setError(error + 1) : showCorrectsLetters(letra);
+    if (!arrayWord.includes(letra)) {
+      setError(error + 1)
+      endGame(hiddenWord);
+    } else {
+      showCorrectsLetters(letra);
+    }
   }
 
   function showCorrectsLetters(letra) {
-    setHiddenWord(hiddenWord.map((e, i) => (arrayWord[i]=== letra) ? e = letra : e));
+    const contem = hiddenWord.map((e, i) => (arrayWord[i] === letra) ? e = letra : e)
+    setHiddenWord(contem);
+    endGame(contem);
   }
 
   function escolhePalavra() {
@@ -41,7 +68,7 @@ function App() {
 
   return (
     <div className="App">
-      <Jogo setGameStart={setGameStart} gameStart={gameStart} newGame={newGame} hiddenWord={hiddenWord} error={error} />
+      <Jogo newGame={newGame} hiddenWord={hiddenWord} error={error} endGameStatus={endGameStatus} />
       <Letras gameStart={gameStart} chosedLetter={chosedLetter} compareHiddenLetter={compareHiddenLetter} />
       <Chute />
     </div>

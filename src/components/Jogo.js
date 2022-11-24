@@ -1,4 +1,4 @@
-function Jogo({gameStart, newGame, hiddenWord, error}) {
+function Jogo({newGame, hiddenWord, error, endGameStatus}) {
 
     return (
         <div className="game">
@@ -6,7 +6,7 @@ function Jogo({gameStart, newGame, hiddenWord, error}) {
             <div className="palavraGame">
                 <input onClick={newGame}
                     type="button" value={"Escolher Palavra"} />
-                <p>{(!gameStart) ? "" : hiddenWord}</p>
+                <p className={endGameStatus} >{hiddenWord}</p>
             </div>
         </div>
     )
