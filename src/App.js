@@ -23,12 +23,12 @@ function App() {
 
 
   // --------------------------------------------------- Finaliza o jogo
-  function endGame(props) {
-    if (!props.includes("_") && error < 6) {
+  function endGame(palavra, erros) {
+    if (!palavra.includes("_") && erros < 6) {
       setEndGameStatus("ganhou");
       setGameStart(false);
       setHiddenWord(Array.from(word));
-    } else if (props.includes("_") && error >= 6) {
+    } else if (palavra.includes("_") && erros >= 6) {
       setEndGameStatus("perdeu");
       setGameStart(false);
       setHiddenWord(Array.from(word));
@@ -50,11 +50,12 @@ function App() {
 
 
   // --------------------------------------------------- Compara a letra selecionada na palavra
-  function compareHiddenLetter(letra) {
+  function compareHiddenLetter(letra, erro) {
     setChosedLetter([...chosedLetter, letra]);
     if (!arrayWord.includes(letra)) {
-      setError(error + 1)
-      endGame(hiddenWord);
+      let erros = erro + 1;
+      setError(erros)
+      endGame(hiddenWord, erros);
     } else {
       showCorrectsLetters(letra);
     }
@@ -73,7 +74,7 @@ function App() {
   return (
     <div className="App">
       <Jogo newGame={newGame} hiddenWord={hiddenWord} error={error} endGameStatus={endGameStatus} />
-      <Letras gameStart={gameStart} chosedLetter={chosedLetter} compareHiddenLetter={compareHiddenLetter} />
+      <Letras gameStart={gameStart} chosedLetter={chosedLetter} compareHiddenLetter={compareHiddenLetter} error={error} />
       <Chute gameStart={gameStart} />
     </div>
   );
