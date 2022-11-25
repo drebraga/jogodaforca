@@ -54,7 +54,7 @@ body {
 }
 
 .perdeu {
-  color: red;
+  color: #FF0000;
 }
 
 .ganhou {
@@ -111,7 +111,7 @@ body {
   color: #000000;
 }
 
-.chute input[placeholder=""] {
+.chute input[type="text"] {
   width: 353px;
   height: 40px;
   background: #ffffff;

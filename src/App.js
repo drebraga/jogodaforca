@@ -12,9 +12,29 @@ function App() {
   const [hiddenWord, setHiddenWord] = useState([""]);
   const [chosedLetter, setChosedLetter] = useState([]);
   const [endGameStatus, setEndGameStatus] = useState("");
+  const [inputGuess, setInputGuess] = useState("");
 
   console.log("palavra normal " + word);
   console.log(error);
+
+
+  // --------------------------------------------------- Finaliza o jogo para o chute
+  function endGameGuess() {
+    if (inputGuess === word) {
+      setEndGameStatus("ganhou");
+      setGameStart(false);
+      setChosedLetter([]);
+      setInputGuess("");
+      setHiddenWord(Array.from(word));
+    } else if (inputGuess !== word) {
+      setEndGameStatus("perdeu");
+      setError(6);
+      setGameStart(false);
+      setChosedLetter([]);
+      setInputGuess("");
+      setHiddenWord(Array.from(word));
+    }
+  }
 
 
   // --------------------------------------------------- Escolhe o numero para o array de palavras
@@ -30,11 +50,13 @@ function App() {
       setEndGameStatus("ganhou");
       setGameStart(false);
       setChosedLetter([]);
+      setInputGuess("");
       setHiddenWord(Array.from(word));
     } else if (palavra.includes("_") && erros === 6) {
       setEndGameStatus("perdeu");
       setGameStart(false);
       setChosedLetter([]);
+      setInputGuess("");
       setHiddenWord(Array.from(word));
     }
   }
@@ -74,12 +96,11 @@ function App() {
   }
 
 
-
   return (
     <div className="App">
       <Jogo gameStart={gameStart} word={word} newGame={newGame} hiddenWord={hiddenWord} error={error} endGameStatus={endGameStatus} />
       <Letras gameStart={gameStart} chosedLetter={chosedLetter} compareHiddenLetter={compareHiddenLetter} error={error} />
-      <Chute gameStart={gameStart} />
+      <Chute gameStart={gameStart} setInputGuess={setInputGuess} inputGuess={inputGuess} endGameGuess={endGameGuess} />
     </div>
   );
 }
