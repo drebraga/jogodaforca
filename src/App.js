@@ -3,8 +3,8 @@ import palavras from "./palavras";
 import Letras from "./components/Letras";
 import Jogo from "./components/Jogo";
 import Chute from "./components/Chute";
-import "./styles/reset.css"
-import "./styles/style.css"
+import "./styles/reset.css";
+import "./styles/style.css";
 
 
 function App() {
@@ -17,11 +17,10 @@ function App() {
   const [endGameStatus, setEndGameStatus] = useState("");
   const [inputGuess, setInputGuess] = useState("");
 
-  console.log("palavra normal " + word);
-  console.log(error);
-
 
   // --------------------------------------------------- Finaliza o jogo para o chute
+
+
   function endGameGuess() {
     if (inputGuess === word) {
       zeraVariaveis("ganhou");
@@ -33,14 +32,17 @@ function App() {
 
 
   // --------------------------------------------------- Escolhe o numero para o array de palavras
+
+
   function escolhePalavra() {
     return Math.round(Math.random() * palavras.length);
   }
 
 
   // --------------------------------------------------- Finaliza o jogo
+
+
   function endGame(palavra, erros) {
-    console.log(erros);
     if (!palavra.includes("_")) {
       zeraVariaveis("ganhou");
     } else if (palavra.includes("_") && erros === 6) {
@@ -50,6 +52,8 @@ function App() {
 
 
   // --------------------------------------------------- Inicia ou reinicia o jogo
+
+
   function newGame() {
     setEndGameStatus("");
     setGameStart(true);
@@ -63,11 +67,13 @@ function App() {
 
 
   // --------------------------------------------------- Compara a letra selecionada na palavra
+
+
   function compareHiddenLetter(letra) {
     setChosedLetter([...chosedLetter, letra]);
     if (!word.normalize("NFD").replace(/[^a-zA-Z\s]/g, "").includes(letra)) {
       let erros = error + 1;
-      setError(erros)
+      setError(erros);
       endGame(hiddenWord, erros);
     } else {
       showCorrectsLetters(letra);
@@ -76,14 +82,21 @@ function App() {
 
 
   // --------------------------------------------------- Mostra a(s) letras(s) selecionada(s) se houver na palavra
+
+
   function showCorrectsLetters(letra) {
-    const contem = hiddenWord.map((e, i) => (arrayWord[i].normalize("NFD").replace(/[^a-zA-Z\s]/g, "") === letra) ? e = arrayWord[i] : e)
+    const contem = hiddenWord.map((e, i) =>
+      (arrayWord[i].normalize("NFD").replace(/[^a-zA-Z\s]/g, "") === letra) ?
+        (e = arrayWord[i]) : (e)
+    );
     setHiddenWord(contem);
     endGame(contem);
   }
 
 
   // --------------------------------------------------- Mostra a(s) letras(s) selecionada(s) se houver na palavra
+
+
   function zeraVariaveis(result) {
     setEndGameStatus(result);
     setGameStart(false);
@@ -95,9 +108,25 @@ function App() {
 
   return (
     <div className="App">
-      <Jogo gameStart={gameStart} word={word} newGame={newGame} hiddenWord={hiddenWord} error={error} endGameStatus={endGameStatus} />
-      <Letras gameStart={gameStart} chosedLetter={chosedLetter} compareHiddenLetter={compareHiddenLetter} error={error} />
-      <Chute gameStart={gameStart} setInputGuess={setInputGuess} inputGuess={inputGuess} endGameGuess={endGameGuess} />
+      <Jogo
+        gameStart={gameStart}
+        word={word} newGame={newGame}
+        hiddenWord={hiddenWord}
+        error={error}
+        endGameStatus={endGameStatus}
+      />
+      <Letras
+        gameStart={gameStart}
+        chosedLetter={chosedLetter}
+        compareHiddenLetter={compareHiddenLetter}
+        error={error}
+      />
+      <Chute
+        gameStart={gameStart}
+        setInputGuess={setInputGuess}
+        inputGuess={inputGuess}
+        endGameGuess={endGameGuess}
+      />
     </div>
   );
 }
