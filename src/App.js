@@ -21,18 +21,10 @@ function App() {
   // --------------------------------------------------- Finaliza o jogo para o chute
   function endGameGuess() {
     if (inputGuess === word) {
-      setEndGameStatus("ganhou");
-      setGameStart(false);
-      setChosedLetter([]);
-      setInputGuess("");
-      setHiddenWord(Array.from(word));
+      zeraVariaveis("ganhou");
     } else if (inputGuess !== word) {
-      setEndGameStatus("perdeu");
+      zeraVariaveis("perdeu");
       setError(6);
-      setGameStart(false);
-      setChosedLetter([]);
-      setInputGuess("");
-      setHiddenWord(Array.from(word));
     }
   }
 
@@ -47,17 +39,9 @@ function App() {
   function endGame(palavra, erros) {
     console.log(erros);
     if (!palavra.includes("_")) {
-      setEndGameStatus("ganhou");
-      setGameStart(false);
-      setChosedLetter([]);
-      setInputGuess("");
-      setHiddenWord(Array.from(word));
+      zeraVariaveis("ganhou");
     } else if (palavra.includes("_") && erros === 6) {
-      setEndGameStatus("perdeu");
-      setGameStart(false);
-      setChosedLetter([]);
-      setInputGuess("");
-      setHiddenWord(Array.from(word));
+      zeraVariaveis("perdeu");
     }
   }
 
@@ -78,7 +62,7 @@ function App() {
   // --------------------------------------------------- Compara a letra selecionada na palavra
   function compareHiddenLetter(letra) {
     setChosedLetter([...chosedLetter, letra]);
-    if (!arrayWord.includes(letra)) {
+    if (!word.normalize("NFD").replace(/[^a-zA-Z\s]/g, "").includes(letra)) {
       let erros = error + 1;
       setError(erros)
       endGame(hiddenWord, erros);
@@ -90,9 +74,19 @@ function App() {
 
   // --------------------------------------------------- Mostra a(s) letras(s) selecionada(s) se houver na palavra
   function showCorrectsLetters(letra) {
-    const contem = hiddenWord.map((e, i) => (arrayWord[i] === letra) ? e = letra : e)
+    const contem = hiddenWord.map((e, i) => (arrayWord[i].normalize("NFD").replace(/[^a-zA-Z\s]/g, "") === letra) ? e = arrayWord[i] : e)
     setHiddenWord(contem);
     endGame(contem);
+  }
+
+
+  // --------------------------------------------------- Mostra a(s) letras(s) selecionada(s) se houver na palavra
+  function zeraVariaveis(result) {
+    setEndGameStatus(result);
+    setGameStart(false);
+    setChosedLetter([]);
+    setInputGuess("");
+    setHiddenWord(Array.from(word));
   }
 
 
