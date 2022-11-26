@@ -5,13 +5,13 @@ import Jogo from "./components/Jogo";
 import Chute from "./components/Chute";
 import "./styles/reset.css";
 import "./styles/style.css";
-import forca0 from "./assets/forca0.png"
-import forca1 from "./assets/forca1.png"
-import forca2 from "./assets/forca2.png"
-import forca3 from "./assets/forca3.png"
-import forca4 from "./assets/forca4.png"
-import forca5 from "./assets/forca5.png"
-import forca6 from "./assets/forca6.png"
+import forca0 from "./assets/forca0.png";
+import forca1 from "./assets/forca1.png";
+import forca2 from "./assets/forca2.png";
+import forca3 from "./assets/forca3.png";
+import forca4 from "./assets/forca4.png";
+import forca5 from "./assets/forca5.png";
+import forca6 from "./assets/forca6.png";
 
 function App() {
   const [gameStart, setGameStart] = useState(false);
@@ -23,6 +23,8 @@ function App() {
   const [endGameStatus, setEndGameStatus] = useState("");
   const [inputGuess, setInputGuess] = useState("");
   const imgForca = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
+  const maxError = 6;
+  const minError = 0;
 
 
   // --------------------------------------------------- Finaliza o jogo para o chute
@@ -33,7 +35,7 @@ function App() {
       zeraVariaveis("ganhou");
     } else if (inputGuess !== word) {
       zeraVariaveis("perdeu");
-      setError(6);
+      setError(maxError);
     }
   }
 
@@ -52,7 +54,7 @@ function App() {
   function endGame(palavra, erros) {
     if (!palavra.includes("_")) {
       zeraVariaveis("ganhou");
-    } else if (palavra.includes("_") && erros === 6) {
+    } else if (palavra.includes("_") && erros === maxError) {
       zeraVariaveis("perdeu");
     }
   }
@@ -64,12 +66,12 @@ function App() {
   function newGame() {
     setEndGameStatus("");
     setGameStart(true);
-    setError(0);
+    setError(minError);
     setChosedLetter([]);
     let newWord = palavras[escolhePalavra()];
-    (newWord === word) ? newWord = palavras[escolhePalavra()] : setWord(newWord);
+    setWord(newWord);
     setArrayWord(Array.from(newWord));
-    setHiddenWord(Array.from(newWord).map((element) => element = "_"));
+    setHiddenWord(Array.from(newWord).map((e) => "_"));
   }
 
 
@@ -79,7 +81,7 @@ function App() {
   function compareHiddenLetter(letra) {
     setChosedLetter([...chosedLetter, letra]);
     if (!word.normalize("NFD").replace(/[^a-zA-Z\s]/g, "").includes(letra)) {
-      let erros = error + 1;
+      const erros = error + 1;
       setError(erros);
       endGame(hiddenWord, erros);
     } else {
@@ -94,7 +96,7 @@ function App() {
   function showCorrectsLetters(letra) {
     const contem = hiddenWord.map((e, i) =>
       (arrayWord[i].normalize("NFD").replace(/[^a-zA-Z\s]/g, "") === letra) ?
-        (e = arrayWord[i]) : (e)
+        arrayWord[i] : e
     );
     setHiddenWord(contem);
     endGame(contem);
