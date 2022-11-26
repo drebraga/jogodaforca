@@ -3,6 +3,9 @@ import palavras from "./palavras";
 import Letras from "./components/Letras";
 import Jogo from "./components/Jogo";
 import Chute from "./components/Chute";
+import "./styles/reset.css"
+import "./styles/style.css"
+
 
 function App() {
   const [gameStart, setGameStart] = useState(false);
