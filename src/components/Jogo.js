@@ -1,5 +1,4 @@
 function Jogo({ word, newGame, hiddenWord, error, endGameStatus, imgForca }) {
-
     return (
         <div className="game">
             <img data-test="game-image" src={imgForca[error]} alt="Imagem indisponível" />

@@ -68,10 +68,10 @@ function App() {
     setGameStart(true);
     setError(minError);
     setChosedLetter([]);
-    let newWord = palavras[escolhePalavra()];
+    const newWord = palavras[escolhePalavra()];
     setWord(newWord);
     setArrayWord(Array.from(newWord));
-    setHiddenWord(Array.from(newWord).map((e) => "_"));
+    setHiddenWord(Array.from(newWord).map(() => "_"));
   }
 
 

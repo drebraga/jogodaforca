@@ -1,5 +1,4 @@
 function Chute({ gameStart, setInputGuess, inputGuess, endGameGuess }) {
-
     return (
         <>
             <div className="chute">
