@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function Letras({ gameStart, chosedLetter, compareHiddenLetter }) {
+const Letras = ({ gameStart, chosedLetter, compareHiddenLetter }) => {
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
     return (
@@ -16,9 +16,9 @@ function Letras({ gameStart, chosedLetter, compareHiddenLetter }) {
             ))}
         </Alphabet>
     )
-}
+};
 
-export default Letras
+export default Letras;
 
 const Alphabet = styled.div`
     margin: 2%;

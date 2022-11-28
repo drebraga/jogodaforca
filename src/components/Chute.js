@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function Chute({ gameStart, setInputGuess, inputGuess, endGameGuess }) {
+const Chute = ({ gameStart, setInputGuess, inputGuess, endGameGuess }) => {
     return (
         <>
             <StyledChute>
@@ -22,9 +22,9 @@ function Chute({ gameStart, setInputGuess, inputGuess, endGameGuess }) {
             </StyledChute>
         </>
     )
-}
+};
 
-export default Chute
+export default Chute;
 
 const StyledChute = styled.div`
     display: flex;
