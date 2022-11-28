@@ -30,8 +30,8 @@ function App() {
     } else if (inputGuess !== word) {
       zeraVariaveis("perdeu");
       setError(maxError);
-    };
-  };
+    }
+  }
 
 
   // --------------------------------------------------- Escolhe o numero para o array de palavras
@@ -39,7 +39,7 @@ function App() {
 
   function escolhePalavra() {
     return Math.round(Math.random() * palavras.length);
-  };
+  }
 
 
   // --------------------------------------------------- Finaliza o jogo
@@ -50,8 +50,8 @@ function App() {
       zeraVariaveis("ganhou");
     } else if (palavra.includes("_") && erros === maxError) {
       zeraVariaveis("perdeu");
-    };
-  };
+    }
+  }
 
 
   // --------------------------------------------------- Inicia ou reinicia o jogo
@@ -66,7 +66,7 @@ function App() {
     setWord(newWord);
     setArrayWord(Array.from(newWord));
     setHiddenWord(Array.from(newWord).map(() => "_"));
-  };
+  }
 
 
   // --------------------------------------------------- Compara a letra selecionada na palavra
@@ -80,8 +80,8 @@ function App() {
       endGame(hiddenWord, erros);
     } else {
       showCorrectsLetters(letra);
-    };
-  };
+    }
+  }
 
 
   // --------------------------------------------------- Mostra a(s) letras(s) selecionada(s) se houver na palavra
@@ -94,7 +94,7 @@ function App() {
     );
     setHiddenWord(contem);
     endGame(contem);
-  };
+  }
 
 
   // --------------------------------------------------- Mostra a(s) letras(s) selecionada(s) se houver na palavra
@@ -106,7 +106,7 @@ function App() {
     setChosedLetter([]);
     setInputGuess("");
     setHiddenWord(Array.from(word));
-  };
+  }
 
 
   return (
@@ -135,8 +135,8 @@ function App() {
       />
     </Container>
     </>
-  );
-};
+  )
+}
 
 export default App;
 
