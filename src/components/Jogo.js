@@ -7,7 +7,7 @@ import forca4 from "../assets/forca4.png";
 import forca5 from "../assets/forca5.png";
 import forca6 from "../assets/forca6.png";
 
-function Jogo({ word, newGame, hiddenWord, error, endGameStatus }) {
+const Jogo = ({ word, newGame, hiddenWord, error, endGameStatus }) => {
     const imgForca = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
     return (
         <Game>
@@ -16,7 +16,7 @@ function Jogo({ word, newGame, hiddenWord, error, endGameStatus }) {
                 <input data-test="choose-word" onClick={newGame}
                     type="button" value={"Escolher Palavra"} />
                 <PalavraGame
-                    className={endGameStatus}
+                    colorWord={endGameStatus}
                     data-test="word"
                     data-answer={word}
                 >{hiddenWord.join('')}</PalavraGame>
@@ -45,13 +45,13 @@ const Game = styled.div`
         line-height: 23px;
         color: #ffffff;
     }
-`
+`;
 
 const Botao = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-`
+`;
 
 const PalavraGame = styled.div`
     margin-top: 30%;
@@ -61,4 +61,5 @@ const PalavraGame = styled.div`
     font-size: 50px;
     line-height: 68px;
     letter-spacing: 10px;
-`
+    color: ${props => (props.colorWord === "") ? "black" : (props.colorWord === "ganhou") ? "green" : "#FF0000"};
+`;

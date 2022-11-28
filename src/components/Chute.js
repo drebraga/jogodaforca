@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 function Chute({ gameStart, setInputGuess, inputGuess, endGameGuess }) {
     return (
@@ -62,4 +62,4 @@ const StyledChute = styled.div`
         text-align: center;
         color: #3c76a1;
     }
-`
+`;

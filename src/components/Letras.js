@@ -2,19 +2,17 @@ import styled from "styled-components";
 
 function Letras({ gameStart, chosedLetter, compareHiddenLetter }) {
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
     return (
         <Alphabet>
             {alfabeto.map((l) => (
-                <button
+                <Letter
                     data-test="letter"
                     disabled={(!gameStart) ? !chosedLetter.includes(l) : chosedLetter.includes(l)}
                     onClick={() => compareHiddenLetter(l)}
                     key={l}
-                    className={
-                        (chosedLetter.includes(l)) ? "letterDisabled" :
-                            (gameStart) ? "letterDisabled letterEnabled" : "letterDisabled"
-                    }
-                >{l.toUpperCase()}</button>
+                    buttonColor="disabled"
+                >{l.toUpperCase()}</Letter>
             ))}
         </Alphabet>
     )
@@ -27,13 +25,20 @@ const Alphabet = styled.div`
     width: 702px;
     display: flex;
     flex-wrap: wrap;
-    p {
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 23px;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        color: #000000;
-    }
-`
+`;
+
+const Letter = styled.button`
+color: ${props => (!props.disabled) ? "#39739d" : "#798a9f"};
+background-color: ${props => (!props.disabled) ? "#e1ecf4" : "#9faab5"};
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+width: 40px;
+height: 40px;
+border: 1px solid #7aa7c7;
+border-radius: 3px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 6px;
+`;
