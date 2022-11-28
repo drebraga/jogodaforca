@@ -23,7 +23,7 @@ const Jogo = ({ word, newGame, hiddenWord, error, endGameStatus }) => {
             </Botao>
         </Game>
     )
-}
+};
 
 export default Jogo
 

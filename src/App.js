@@ -3,7 +3,6 @@ import palavras from "./palavras";
 import Letras from "./components/Letras";
 import Jogo from "./components/Jogo";
 import Chute from "./components/Chute";
-import "./styles/style.css";
 import styled from "styled-components";
 import Reset from "./styles/ResetCSS";
 import GlobalStyle from "./styles/GlobalStyle";
